@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-{% load staticfiles %}
-<html lang="eng">
-<head>
-	<title> Django Exercise </title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
-	<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-</head>
-<body>
-	<div class="row">
-	<div class="container">
-		<h1> Welcome Django </h1>
-		<div class="col-md-9">
-		{% for post in posts %}
-		
-			<div >
-				<p>published: {{post.published_date}}</p>
-				<h1><a href="">{{post.title}}</a></h1>
-				<p>{{post.text | linebreaks}}</p>
+	{% extends 'blog/base.html' %}
+	{% block content %}
+	{% for post in posts %}
+		<div class="post">
+			<div class="date">
+				published: {{post.published_date}}
 			</div>
+			
+			<h1><a href="">{{post.title}}</a></h1>
+			<p>{{post.text | linebreaks}}</p>
+		</div>
 	
 	
 		
 	{% endfor %}
+	{% endblock %}
 	
 	
-		</div>
-	</div>
-	</div>
-	
-</body>
-</html>
+
 	
